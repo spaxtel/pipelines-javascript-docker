@@ -6,6 +6,8 @@
       - deployment: deploy
         displayName: Deploy
         environment: 'Private AKS Dev'
+        pool:
+          vmImage: ubuntu-latest
         strategy:
           runOnce:
             deploy:
