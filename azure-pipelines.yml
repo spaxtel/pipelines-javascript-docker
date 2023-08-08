@@ -1,0 +1,27 @@
+
+    stages:
+    - stage: dev
+      displayName: DEV
+      jobs:  
+      - deployment: deploy
+        displayName: Deploy
+        pool: my-private-pool
+        environment: 'Private AKS Dev'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+              - checkout: self
+              - task: HelmDeploy@0
+                displayName: Helm Deploy app
+                inputs:
+                  connectionType: 'Kubernetes Service Connection'
+                  kubernetesServiceConnection: 'Private AKS Connection Dev'
+                  namespace: 'dev'
+                  command: upgrade
+                  chartType: FilePath
+                  chartPath: '/path/to/chart'
+                  releaseName: 'release-name'
+                  valueFile: '/path/to/value/file'
+                  arguments: '--create-namespace'
+
