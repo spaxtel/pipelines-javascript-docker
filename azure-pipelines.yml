@@ -16,7 +16,7 @@
                 displayName: Helm Deploy app
                 inputs:
                   connectionType: 'Kubernetes Service Connection'
-                  kubernetesServiceConnection: 'Private AKS Connection Dev'
+                  kubernetesServiceConnection: 'aksdev'
                   namespace: 'dev'
                   command: upgrade
                   chartType: FilePath
