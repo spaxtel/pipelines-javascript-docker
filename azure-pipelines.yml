@@ -1,9 +1,8 @@
-
- # this has one implicit stage and one implicit job
-pool:
-  vmImage: 'ubuntu-latest'
-steps:
-- bash: echo "Hello world"
+- task: KubernetesManifest@1
+  inputs:
+    action: 'deploy'
+    connectionType: 'kubernetesServiceConnection'
+    kubernetesServiceConnection: 'aksdev'
  
 
 
