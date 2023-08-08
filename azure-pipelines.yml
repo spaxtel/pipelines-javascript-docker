@@ -1,28 +1,10 @@
 
-    stages:
-    - stage: dev
-      displayName: DEV
-      jobs:  
-      - deployment: deploy
-        displayName: Deploy
-        environment: 'Private AKS Dev'
-        pool:
-          vmImage: ubuntu-latest
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-              - checkout: self
-              - task: HelmDeploy@0
-                displayName: Helm Deploy app
-                inputs:
-                  connectionType: 'Kubernetes Service Connection'
-                  kubernetesServiceConnection: 'aksdev'
-                  namespace: 'dev'
-                  command: upgrade
-                  chartType: FilePath
-                  chartPath: '/path/to/chart'
-                  releaseName: 'release-name'
-                  valueFile: '/path/to/value/file'
-                  arguments: '--create-namespace'
+ # this has one implicit stage and one implicit job
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- bash: echo "Hello world"
+ 
+
+
 
