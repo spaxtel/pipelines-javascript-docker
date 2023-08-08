@@ -5,8 +5,6 @@
       jobs:  
       - deployment: deploy
         displayName: Deploy
-        pool: my-private-pool
-        environment: 'Private AKS Dev'
         strategy:
           runOnce:
             deploy:
